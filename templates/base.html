@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %} | AI-powered chatbot</title>
+    {% block head %}
+    <!-- Head -->
+    {% endblock %}
+</head>
+<body>
+    <div id="nav">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about', type='LLM') }}">About</a></li>
+        </ul>
+        <ul>
+            {% if 'user' in session %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">Signup</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div id="title">
+        {% block header %}
+        <!-- Header -->
+        {% endblock %}
+    </div>
+   <div id="content">
+    {% block content %}
+    <!-- Content -->
+    {% endblock %}
+   </div>
+    <div id="footer">Copyright @ 2024 sandeep vashisth</div>
+</body>
+</html>
